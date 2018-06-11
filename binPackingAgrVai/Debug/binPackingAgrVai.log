@@ -1,0 +1,6 @@
+﻿  SampleDecoder.cpp
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(41): warning C4018: '<': signed/unsigned mismatch
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(43): warning C4018: '<': signed/unsigned mismatch
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(111): warning C4018: '<': signed/unsigned mismatch
+  binPackingAgrVai.vcxproj -> D:\Usuario\Documents\Visual Studio 2015\Projects\binPackingAgrVai\Debug\binPackingAgrVai.exe
+  binPackingAgrVai.vcxproj -> D:\Usuario\Documents\Visual Studio 2015\Projects\binPackingAgrVai\Debug\binPackingAgrVai.pdb (Partial PDB)
