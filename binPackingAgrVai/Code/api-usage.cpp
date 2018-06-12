@@ -39,22 +39,15 @@
 #include "../Headers/BRKGA.h"
 #include "../Headers/MTRand.h"
 #include "../Headers/SampleDecoder.h"
+#include <ctime>
 
 
-
-int main() {
-	std::cout << "Welcome to the BRKGA API sample driver.\nFinding a (heuristic) minimizer for "
-			<< " f(x) = sum_i (x_i * i) where x \\in [0,1)^n." << std::endl;
+int main_de_taubateh(char nameTest[], std::vector<int> A, int V, int expectedSolution) {
 	
-
-	std::vector<int> A = { 4, 3, 2, 5 };
-	int V = 5;
-
-
 	const unsigned n = A.size();		// size of chromosomes
 	const unsigned p = 100;		// size of population
 	const double pe = 0.10;		// fraction of population to be the elite-set
-	const double pm = 0.10;		// fraction of population to be replaced by mutants
+	const double pm = 0.30;		// fraction of population to be replaced by mutants
 	const double rhoe = 0.70;	// probability that offspring inherit an allele from elite parent
 	const unsigned K = 3;		// number of independent populations
 	const unsigned MAXT = 1;	// number of threads for parallel decoding
@@ -71,31 +64,69 @@ int main() {
 	unsigned generation = 0;		// current generation
 	const unsigned X_INTVL = 100;	// exchange best individuals at every 100 generations
 	const unsigned X_NUMBER = 2;	// exchange top 2 best
-	const unsigned MAX_GENS = 1000;	// run for 1000 gens
+	const unsigned MAX_GENS = 100;	// run for 1000 gens
+	std::cout << "Test Case: " << nameTest << " | Expected Solution: " << expectedSolution << std::endl;
 	std::cout << "Running for " << MAX_GENS << " generations..." << std::endl;
+	clock_t begin = clock();
 	do {
 		algorithm.evolve();	// evolve the population for one generation
 		
 		if((++generation) % X_INTVL == 0) {
 			algorithm.exchangeElite(X_NUMBER);	// exchange top individuals
 		}
+
+		std::cout << "Current solution found has objective value = " << algorithm.getBestFitness() << std::endl;
 	} while (generation < MAX_GENS);
+
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 	
 	// print the fitness of the top 10 individuals of each population:
 	std::cout << "Fitness of the top 10 individuals of each population:" << std::endl;
 	const unsigned bound = std::min(p, unsigned(10));	// makes sure we have 10 individuals
-	for(unsigned i = 0; i < K; ++i) {
+	/*for(unsigned i = 0; i < K; ++i) {
 		std::cout << "Population #" << i << ":" << std::endl;
 		for(unsigned j = 0; j < bound; ++j) {
 			std::cout << "\t" << j << ") "
 					<< algorithm.getPopulation(i).getFitness(j) << std::endl;
 		}
-	}
+	}*/
 	
-	std::cout << "Best solution found has objective value = "
-	 		<< algorithm.getBestFitness() << std::endl;
+	std::cout << "Best solution found has objective value = " << algorithm.getBestFitness() << " at " <<  elapsed_secs << " seconds :)"<< std::endl;
 	
 	system("pause");
 
 	return 0;
+}
+int main(int argc, char *argv[]) {
+	int qtd, V, N, bestSolution;
+	char nameTest[50];
+	FILE *arq;
+
+	if (argc > 1) {
+		arq = fopen(argv[1], "r");
+		if (arq == NULL)
+			printf("Erro, nao foi possivel abrir o arquivo\n");
+		else {
+			fscanf(arq, "%d\n", &qtd);
+			for (int i = 0; i < qtd; i++) {
+				fscanf(arq, "%s\n", nameTest);
+				fscanf(arq, "%d %d %d", &V, &N, &bestSolution);
+				std::vector<int> A(N);
+				for (int j = 0; j < N; j++) {
+					fscanf(arq, "%d\n", &A[j]);
+				}
+				main_de_taubateh(nameTest, A, V, bestSolution);
+				//system("pause");
+			}
+			
+			fclose(arq);
+		}
+			
+
+
+		return 0;
+	}
+
+
 }

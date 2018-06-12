@@ -1,6 +1,8 @@
-﻿  SampleDecoder.cpp
-d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(41): warning C4018: '<': signed/unsigned mismatch
-d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(43): warning C4018: '<': signed/unsigned mismatch
-d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\code\sampledecoder.cpp(111): warning C4018: '<': signed/unsigned mismatch
+﻿  api-usage.cpp
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\headers\brkga.h(100): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\headers\brkga.h(177): note: see reference to class template instantiation 'BRKGA<Decoder,RNG>' being compiled
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\headers\brkga.h(125): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\headers\brkga.h(181): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+d:\usuario\documents\visual studio 2015\projects\binpackingagrvai\binpackingagrvai\headers\brkga.h(260): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
   binPackingAgrVai.vcxproj -> D:\Usuario\Documents\Visual Studio 2015\Projects\binPackingAgrVai\Debug\binPackingAgrVai.exe
   binPackingAgrVai.vcxproj -> D:\Usuario\Documents\Visual Studio 2015\Projects\binPackingAgrVai\Debug\binPackingAgrVai.pdb (Partial PDB)
